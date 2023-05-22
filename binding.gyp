@@ -2,17 +2,17 @@
 	"targets": [{
 		"target_name": "opencv4nodejs",
 		"defines": [
-			"<!@(node ./install/parseEnv.js OPENCV4NODEJS_DEFINES)",
+			"<!@(node ./dist/cjs/install/genEnv.js OPENCV4NODEJS_DEFINES)",
 		],
 		"include_dirs" : [
-			"<!@(node ./install/parseEnv.js OPENCV4NODEJS_INCLUDES)",
+			"<!@(node ./dist/cjs/install/genEnv.js OPENCV4NODEJS_INCLUDES)",
 			"cc",
 			"cc/core",
 			"<!(node -e \"require('nan')\")",
 			"cc/native-node-utils",
 		],
 		"libraries": [
-			"<!@(node ./install/parseEnv.js OPENCV4NODEJS_LIBRARIES)",
+			"<!@(node ./dist/cjs/install/genEnv.js OPENCV4NODEJS_LIBRARIES)",
 		],
 		"sources": [
 			"cc/opencv4nodejs.cc",

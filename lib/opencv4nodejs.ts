@@ -31,4 +31,4 @@ for (const key in cv) {
 }
 defExport['cv'] = cv;
 
-export = defExport;
+export default defExport;

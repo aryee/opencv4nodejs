@@ -32,8 +32,16 @@
     "build-opencv": "bin/install.js"
   },
   "homepage": "https://github.com/UrielCh/opencv4nodejs#readme",
-  "main": "./lib/opencv4nodejs.js",
+  "main": "dist/cjs/lib/opencv4nodejs.js",
+  "module": "dist/esm/lib/opencv4nodejs.js",
   "typings": "./typings/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/lib/opencv4nodejs.js",
+      "import": "./dist/esm/lib/opencv4nodejs.js",
+      "types": "./typings/index.d.ts"
+    }
+  },
   "scripts": {
     "build": "tsc --pretty --project tsconfig.json && tsc --pretty --project tsconfig-cjs.json",
     "prepack": "npm run build",
@@ -82,13 +90,7 @@
   },
   "files": [
     "cc",
-    "install/*.js",
-    "install/*.d.ts",
-    "install/*.map",
-    "lib/**/*.xml",
-    "lib/**/*.js",
-    "lib/**/*.d.ts",
-    "lib/**/*.map",
+    "dist",
     "bin/*.js",
     "dist",
     "typings",

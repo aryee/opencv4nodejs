@@ -27,7 +27,7 @@ const promisify = (fn: () => any) => function (...params: any[]) {
   });
 };
 
-export default <T>(cv: T): T => {
+export default <T extends object>(cv: T): T => {
   const fns = Object.keys(cv).filter(k => isFn(cv[k])).map(k => cv[k]);
   const asyncFuncs = fns.filter(isAsyncFn);
   const clazzes = fns.filter(fn => fn.prototype && !!Object.keys(fn.prototype).length);

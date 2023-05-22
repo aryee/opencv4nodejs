@@ -42,7 +42,7 @@ export function getOpenCV(opt?: OpenCVBuildEnvParams): OpenCVType {
     opt = { prebuild: 'latestBuild' }
   const builder = new OpenCVBuilder(opt);
 
-  let opencvBuild: OpenCVType = null;
+  let opencvBuild: OpenCVType;
   let requirePath = '';
   if (isElectronWebpack()) {
     requirePath = '../build/Release/opencv4nodejs.node';
@@ -69,7 +69,7 @@ export function getOpenCV(opt?: OpenCVBuildEnvParams): OpenCVType {
 
     const opencvBinDir = tryGetOpencvBinDir(builder)
     logDebug('require', 'adding opencv binary dir to path: ' + opencvBinDir)
-    if (!fs.existsSync(opencvBinDir)) {
+    if (!opencvBinDir || !fs.existsSync(opencvBinDir)) {
       throw new Error('opencv binary dir does not exist: ' + opencvBinDir)
     }
     // ensure binaries are added to path on windows
